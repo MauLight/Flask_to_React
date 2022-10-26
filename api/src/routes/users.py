@@ -194,3 +194,12 @@ def update_activity_by_user_id_trip_id_and_activity_id(mytrips_id, act_id, id):
 
     activity.save()
     return jsonify(activity.serialize()), 200
+
+#DELETE ENDPOINTS
+
+#DELETE USER BY ID
+@bpUser.route('/users/<int:id>/delete', methods=['DELETE'])
+def delete_user(id):
+    user = User.query.get(id)   
+    user.delete()
+    return jsonify({ "message": "Agenda Deleted!"}), 200
